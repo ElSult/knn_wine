@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="wineSetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="winequalityRed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fixed acidity" Type="varchar" MaxLength="50" />
+          <Property Name="volatile acidity" Type="varchar" MaxLength="50" />
+          <Property Name="citric acid" Type="varchar" MaxLength="50" />
+          <Property Name="residual sugar" Type="varchar" MaxLength="50" />
+          <Property Name="chlorides" Type="varchar" MaxLength="50" />
+          <Property Name="free sulfur dioxide" Type="varchar" MaxLength="50" />
+          <Property Name="total sulfur dioxide" Type="varchar" MaxLength="50" />
+          <Property Name="density" Type="varchar" MaxLength="50" />
+          <Property Name="pH" Type="varchar" MaxLength="50" />
+          <Property Name="sulphates" Type="varchar" MaxLength="50" />
+          <Property Name="alcohol" Type="varchar" MaxLength="50" />
+          <Property Name="quality" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="asp_Podaci_Za_Treniranje_KNN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="asp_Trening_Podaci_Za_KNN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="wineSetModelStoreContainer">
+          <EntitySet Name="winequalityRed" EntityType="Self.winequalityRed" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="wineSetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="wineSetEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="asp_Podaci_Za_Treniranje_KNN" EntitySet="winequalityRed" ReturnType="Collection(wineSetModel.winequalityRed)" />
+          <FunctionImport Name="asp_Trening_Podaci_Za_KNN" EntitySet="winequalityRed" ReturnType="Collection(wineSetModel.winequalityRed)" />
+          <EntitySet Name="winequalityRed" EntityType="wineSetModel.winequalityRed" />
+        </EntityContainer>
+        <EntityType Name="winequalityRed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fixed_acidity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="volatile_acidity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="citric_acid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="residual_sugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chlorides" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="free_sulfur_dioxide" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="total_sulfur_dioxide" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="density" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sulphates" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alcohol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="quality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="wineSetModelStoreContainer" CdmEntityContainer="wineSetEntities" >
+          <FunctionImportMapping FunctionImportName="asp_Podaci_Za_Treniranje_KNN" FunctionName="wineSetModel.Store.asp_Podaci_Za_Treniranje_KNN">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="asp_Trening_Podaci_Za_KNN" FunctionName="wineSetModel.Store.asp_Trening_Podaci_Za_KNN">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="winequalityRed">
+            <EntityTypeMapping TypeName="wineSetModel.winequalityRed">
+              <MappingFragment StoreEntitySet="winequalityRed">
+                <ScalarProperty Name="quality" ColumnName="quality" />
+                <ScalarProperty Name="alcohol" ColumnName="alcohol" />
+                <ScalarProperty Name="sulphates" ColumnName="sulphates" />
+                <ScalarProperty Name="pH" ColumnName="pH" />
+                <ScalarProperty Name="density" ColumnName="density" />
+                <ScalarProperty Name="total_sulfur_dioxide" ColumnName="total sulfur dioxide" />
+                <ScalarProperty Name="free_sulfur_dioxide" ColumnName="free sulfur dioxide" />
+                <ScalarProperty Name="chlorides" ColumnName="chlorides" />
+                <ScalarProperty Name="residual_sugar" ColumnName="residual sugar" />
+                <ScalarProperty Name="citric_acid" ColumnName="citric acid" />
+                <ScalarProperty Name="volatile_acidity" ColumnName="volatile acidity" />
+                <ScalarProperty Name="fixed_acidity" ColumnName="fixed acidity" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

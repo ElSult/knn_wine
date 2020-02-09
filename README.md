@@ -1,1 +1,4 @@
-# knn_wine
+kNN
+===
+
+implement kNN algorithm in c#
